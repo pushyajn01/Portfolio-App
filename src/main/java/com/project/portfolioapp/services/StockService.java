@@ -11,4 +11,5 @@ public interface StockService {
     void updateStocks(InputStream fileInputStream);
     Stock getStockById(String stockId);
 
+
 }

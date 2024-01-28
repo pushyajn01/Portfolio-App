@@ -39,5 +39,15 @@ public class HoldingsDTO {
     public void setAverageBuyPrice(double averageBuyPrice) {
         this.averageBuyPrice = averageBuyPrice;
     }
+
+    public HoldingsDTO() {
+    }
+
+    public HoldingsDTO(Long userId, String stockId, int quantity, double averageBuyPrice) {
+        this.userId = userId;
+        this.stockId = stockId;
+        this.quantity = quantity;
+        this.averageBuyPrice = averageBuyPrice;
+    }
 }
 

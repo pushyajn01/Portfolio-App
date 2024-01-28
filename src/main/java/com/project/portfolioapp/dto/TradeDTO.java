@@ -37,4 +37,14 @@ public class TradeDTO {
     public void setTradeType(String tradeType) {
         this.tradeType = tradeType;
     }
+
+    public TradeDTO() {
+    }
+
+    public TradeDTO(Long userId, String stockId, int quantity, String tradeType) {
+        this.userId = userId;
+        this.stockId = stockId;
+        this.quantity = quantity;
+        this.tradeType = tradeType;
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.project.portfolioapp.repository")
+@EnableJpaRepositories("com.project.portfolioapp")
 @ComponentScan
 public class PortfolioAppApplication {
 

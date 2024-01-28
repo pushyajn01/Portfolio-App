@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.io.InputStream;
 
 @RestController
 @RequestMapping("/api/v1/stocks")
@@ -17,8 +18,21 @@ public class StockController {
     private StockService stockService;
     @PostMapping("/update-stocks")
     public ResponseEntity<String>updateStocks(@RequestParam("file")MultipartFile file) throws IOException {
-        stockService.updateStocks(file.getInputStream());
-        return ResponseEntity.ok("Stocks updated successfully");
+        if (file == null || file.isEmpty()) {
+            throw new IllegalArgumentException("File is null or empty");
+        }
+        try (InputStream inputStream = file.getInputStream()) {
+            if (inputStream == null) {
+                throw new IOException("Input stream is null");
+
+            }
+            stockService.updateStocks(file.getInputStream());
+            return ResponseEntity.ok("Stocks updated successfully");
+        }
+        catch (IOException e) {
+            // Handle other IOExceptions if needed
+            throw new IOException("Failed to process the file", e);
+        }
     }
 
     @GetMapping(value = "/getstock/{stockId}",produces = MediaType.APPLICATION_JSON_VALUE)
